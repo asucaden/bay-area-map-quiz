@@ -1,54 +1,35 @@
-# React + TypeScript + Vite
+# Neighborhooder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive map quiz game to help you develop an intuitive mental map of metro areas like San Francisco, Dallas, Nashville, Phoenix, and Seattle.
 
-Currently, two official plugins are available:
+## 🗺 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Click-to-guess map game powered by Leaflet
+- Region dropdown for plug-and-play cities
+- Hard Mode: removes place labels for a real challenge
+- Score tracking with linear distance-based scoring
+- Fully static frontend built with Vite, React, and TypeScript
 
-## Expanding the ESLint configuration
+## 🚀 Deployment
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+To deploy the app to the live server:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+pnpm ship
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+This runs the production deploy script on your EC2 box.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🏗 Stack
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [Leaflet](https://leafletjs.com/)
+- TypeScript
+- Hosted on EC2 with Nginx + Certbot for HTTPS
+
+## 📂 Folder Structure
+
+- `src/components`: React components (Map, Markers, Controls, etc.)
+- `public/places/`: Region data files (JSON)
+- `deploy-neighborhooder.sh`: CI/CD script on EC2
