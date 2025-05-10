@@ -101,7 +101,7 @@ const Map: React.FC = () => {
           onChange={() => setHardMode(!hardMode)}
           style={{ marginRight: '8px' }}
         />
-        Hard Mode (no labels)
+        Hard Mode
       </label>
       {!loading && currentPlace && (
         <MapContainer center={center} zoom={11} className="leaflet-container">
@@ -132,7 +132,6 @@ const Map: React.FC = () => {
           )}
         </MapContainer>
       )}
-
       <div className="card">
         <h2>
           {loading
