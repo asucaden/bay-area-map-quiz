@@ -29,12 +29,19 @@ export function useGame(places: Place[]) {
     setCurrentIndex((prev) => Math.min(prev + 1, places.length - 1))
   }
 
+  function resetGame() {
+    setCurrentIndex(0)
+    setTotalScore(0)
+    setGuesses([])
+  }
+
   return {
     currentPlace,
     totalScore,
     guesses,
     submitGuess,
     nextRound,
+    resetGame,
     round: currentIndex + 1,
   }
 }

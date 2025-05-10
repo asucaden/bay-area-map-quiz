@@ -1,0 +1,72 @@
+[
+  { "name": "Downtown Phoenix", "lat": 33.4484, "lng": -112.074 },
+  { "name": "Roosevelt Row", "lat": 33.4585, "lng": -112.0729 },
+  { "name": "Encanto", "lat": 33.4742, "lng": -112.0888 },
+  { "name": "Midtown Phoenix", "lat": 33.4943, "lng": -112.066 },
+  { "name": "Uptown Phoenix", "lat": 33.5255, "lng": -112.058 },
+  { "name": "Arcadia", "lat": 33.503, "lng": -111.9879 },
+  { "name": "Biltmore Area", "lat": 33.516, "lng": -112.026 },
+  { "name": "Camelback Mountain", "lat": 33.514, "lng": -111.9638 },
+  { "name": "Phoenix Sky Harbor Airport", "lat": 33.4353, "lng": -112.0078 },
+  { "name": "South Mountain Park", "lat": 33.3456, "lng": -112.0667 },
+  { "name": "Ahwatukee Foothills", "lat": 33.3458, "lng": -112.0281 },
+  { "name": "Desert Ridge", "lat": 33.6864, "lng": -112.0391 },
+  { "name": "Deer Valley", "lat": 33.6835, "lng": -112.08 },
+  { "name": "North Mountain Village", "lat": 33.5887, "lng": -112.0949 },
+  { "name": "Paradise Valley Village", "lat": 33.602, "lng": -111.9824 },
+  { "name": "Old Town Scottsdale", "lat": 33.4936, "lng": -111.9217 },
+  { "name": "Scottsdale Fashion Square", "lat": 33.5036, "lng": -111.9281 },
+  {
+    "name": "McDowell Sonoran Preserve Gateway",
+    "lat": 33.6831,
+    "lng": -111.8243
+  },
+  { "name": "WestWorld of Scottsdale", "lat": 33.6457, "lng": -111.8606 },
+  { "name": "ASU Tempe Campus", "lat": 33.421, "lng": -111.933 },
+  { "name": "Tempe Town Lake", "lat": 33.4309, "lng": -111.9409 },
+  { "name": "Mill Avenue District", "lat": 33.4286, "lng": -111.94 },
+  { "name": "Downtown Mesa", "lat": 33.4152, "lng": -111.8315 },
+  { "name": "Mesa Riverview", "lat": 33.4582, "lng": -111.8807 },
+  { "name": "Sloan Park", "lat": 33.4366, "lng": -111.8849 },
+  { "name": "Downtown Chandler", "lat": 33.3062, "lng": -111.8413 },
+  { "name": "Chandler Fashion Center", "lat": 33.2965, "lng": -111.8928 },
+  { "name": "Gilbert Heritage District", "lat": 33.3528, "lng": -111.789 },
+  { "name": "SanTan Village", "lat": 33.3082, "lng": -111.744 },
+  { "name": "Queen Creek Marketplace", "lat": 33.2624, "lng": -111.6347 },
+  { "name": "Downtown Glendale", "lat": 33.5387, "lng": -112.1858 },
+  {
+    "name": "Westgate Entertainment District",
+    "lat": 33.5311,
+    "lng": -112.2616
+  },
+  { "name": "State Farm Stadium", "lat": 33.5276, "lng": -112.2625 },
+  { "name": "Arrowhead Towne Center", "lat": 33.6409, "lng": -112.2382 },
+  { "name": "Peoria Sports Complex", "lat": 33.6338, "lng": -112.2386 },
+  { "name": "Surprise Stadium", "lat": 33.6095, "lng": -112.3779 },
+  { "name": "Goodyear Ballpark", "lat": 33.4301, "lng": -112.3875 },
+  { "name": "Avondale City Center", "lat": 33.4356, "lng": -112.3496 },
+  {
+    "name": "Estrella Mountain Regional Park",
+    "lat": 33.4747,
+    "lng": -112.299
+  },
+  { "name": "Downtown Buckeye", "lat": 33.3743, "lng": -112.5862 },
+  { "name": "Anthem Community Park", "lat": 33.867, "lng": -112.115 },
+  { "name": "Downtown Cave Creek", "lat": 33.8253, "lng": -111.9507 },
+  { "name": "Carefree Sundial", "lat": 33.8225, "lng": -111.9252 },
+  { "name": "Fountain Hills Fountain Park", "lat": 33.6042, "lng": -111.7144 },
+  { "name": "Bulldog Canyon", "lat": 33.4799, "lng": -111.5437 },
+  { "name": "Phoenix Zoo", "lat": 33.4515, "lng": -111.948 },
+  {
+    "name": "Hole-in-the-Rock (Papago Park)",
+    "lat": 33.4523,
+    "lng": -111.9486
+  },
+  { "name": "Desert Botanical Garden", "lat": 33.4606, "lng": -111.9477 },
+  { "name": "Wild Horse Pass", "lat": 33.278, "lng": -111.9776 },
+  {
+    "name": "Salt River Fields at Talking Stick",
+    "lat": 33.5406,
+    "lng": -111.89
+  }
+]
