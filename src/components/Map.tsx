@@ -48,6 +48,7 @@ const Map: React.FC = () => {
   const [center, setCenter] = useState<[number, number]>(
     regionConfig['Bay Area'].center
   )
+  const [hardMode, setHardMode] = useState(false)
 
   // Load places whenever region changes
   useEffect(() => {
@@ -93,11 +94,28 @@ const Map: React.FC = () => {
           </option>
         ))}
       </select>
+      <label style={{ margin: '8px 0', display: 'block', color: '#f5f5f5' }}>
+        <input
+          type="checkbox"
+          checked={hardMode}
+          onChange={() => setHardMode(!hardMode)}
+          style={{ marginRight: '8px' }}
+        />
+        Hard Mode (no labels)
+      </label>
       {!loading && currentPlace && (
         <MapContainer center={center} zoom={11} className="leaflet-container">
           <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution="&copy; OpenStreetMap contributors"
+            url={
+              hardMode
+                ? 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png'
+                : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+            }
+            attribution={
+              hardMode
+                ? '&copy; OpenStreetMap contributors &copy; CARTO'
+                : '&copy; OpenStreetMap contributors'
+            }
           />
           <ClickHandler
             currentPlace={currentPlace}
