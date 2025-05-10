@@ -9,6 +9,7 @@ import { MapMarkers } from './MapMarkers'
 import { Controls } from './Controls'
 import { ClickHandler } from './ClickHandler'
 import type { Place } from '../types/place'
+import '../fix-leaflet'
 
 function shuffleArray<T>(array: T[]): T[] {
   const arr = array.slice()
