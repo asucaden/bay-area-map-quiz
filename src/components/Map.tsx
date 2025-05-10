@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { MapContainer, TileLayer } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Polyline } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import './Map.css'
 import { useGame } from '../hooks/useGame'
 import { calculateScore } from '../utils/calculateScore'
 import { ScoreDisplay } from './ScoreDisplay'
-import { MapMarkers } from './MapMarkers'
 import { Controls } from './Controls'
 import { ClickHandler } from './ClickHandler'
 import type { Place } from '../types/place'
@@ -50,6 +49,14 @@ const Map: React.FC = () => {
   )
   const [hardMode, setHardMode] = useState(false)
 
+  const [pendingGuess, setPendingGuess] = useState<{
+    lat: number
+    lng: number
+    distance: number
+    score: number
+  } | null>(null)
+  const [showResult, setShowResult] = useState(false)
+
   // Load places whenever region changes
   useEffect(() => {
     const cfg = regionConfig[selectedRegion]
@@ -62,6 +69,8 @@ const Map: React.FC = () => {
         setPlaces(shuffled)
         resetGame()
         setLoading(false)
+        setPendingGuess(null)
+        setShowResult(false)
       })
   }, [selectedRegion])
 
@@ -74,12 +83,10 @@ const Map: React.FC = () => {
     resetGame,
     round,
   } = useGame(places)
-  const lastGuess = guesses[guesses.length - 1]
-  const hasGuessed = Boolean(lastGuess && lastGuess.place === currentPlace)
 
-  const handleGuess = (lat: number, lng: number, distance: number) => {
+  const handleMapClick = (lat: number, lng: number, distance: number) => {
     const score = calculateScore(distance)
-    submitGuess(lat, lng, distance, score)
+    setPendingGuess({ lat, lng, distance, score })
   }
 
   return (
@@ -119,16 +126,22 @@ const Map: React.FC = () => {
           />
           <ClickHandler
             currentPlace={currentPlace}
-            onGuess={handleGuess}
-            disabled={hasGuessed}
+            onGuess={handleMapClick}
+            disabled={showResult}
           />
-          {hasGuessed && lastGuess && (
-            <MapMarkers
-              guessLat={lastGuess.pickedLat}
-              guessLng={lastGuess.pickedLng}
-              actualLat={lastGuess.place.lat}
-              actualLng={lastGuess.place.lng}
-            />
+          {pendingGuess && (
+            <Marker position={[pendingGuess.lat, pendingGuess.lng]} />
+          )}
+          {showResult && pendingGuess && (
+            <>
+              <Marker position={[currentPlace.lat, currentPlace.lng]} />
+              <Polyline
+                positions={[
+                  [pendingGuess.lat, pendingGuess.lng],
+                  [currentPlace.lat, currentPlace.lng],
+                ]}
+              />
+            </>
           )}
         </MapContainer>
       )}
@@ -141,9 +154,42 @@ const Map: React.FC = () => {
               : 'Ready!'}
         </h2>
 
-        <ScoreDisplay totalScore={totalScore} lastGuess={lastGuess} />
+        <ScoreDisplay
+          totalScore={totalScore}
+          lastGuess={guesses[guesses.length - 1]}
+        />
 
-        <Controls onNext={nextRound} disabled={!hasGuessed} />
+        {!showResult ? (
+          <button
+            className="controls-button"
+            onClick={() => {
+              if (pendingGuess) {
+                submitGuess(
+                  pendingGuess.lat,
+                  pendingGuess.lng,
+                  pendingGuess.distance,
+                  pendingGuess.score
+                )
+                setShowResult(true)
+              }
+            }}
+            disabled={!pendingGuess}
+          >
+            Confirm Guess
+          </button>
+        ) : (
+          <button
+            className="controls-button"
+            onClick={() => {
+              // Reset pending guess and result display before next round
+              setPendingGuess(null)
+              setShowResult(false)
+              nextRound()
+            }}
+          >
+            Next
+          </button>
+        )}
       </div>
     </div>
   )
